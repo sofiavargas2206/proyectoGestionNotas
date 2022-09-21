@@ -1,11 +1,12 @@
 function login(){
     var usuario=document.getElementById("usuario").value;
-    var contraseñia = document.getElementById("contrasenia").value;
+    var contrasenia = document.getElementById("contrasenia").value;
     
-event.preventDefault();
+    event.preventDefault();
+   
   
-  if(usuario!=null && contraseñia!=null){
+  if(usuario!=null && contrasenia!=null){
     window.location.href="./Inicio.html";
-}
+        }
 
 }

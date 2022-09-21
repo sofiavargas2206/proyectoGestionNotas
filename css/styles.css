@@ -1,29 +1,3 @@
-.abs-centdr {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-   
-  }
-  
-  .formu{
-    width: 30em;
-    border-radius: 1em;
-    background-color: rgb(247, 243, 243);
-    
-  }
-  .tituloLogin{
-    text-align: center;
-  }
-.form-group{
-    margin: 0.1em 1em ;
-}
-  .btn-primary {
-    width: 10em;
-    margin: 0.5em 8em ;
-  }
-  .contenedor-icono{
-    width: 3em;
-    height: 3em;
-    color: white;
-  }
+
+
+ 
