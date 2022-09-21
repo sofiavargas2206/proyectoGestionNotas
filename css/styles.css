@@ -1,3 +1,62 @@
+.abs-centdr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+   
+  }
+  
+  .formu{
+    width: 30em;
+    border-radius: 1em;
+    background-color: rgb(247, 243, 243);
+    
+  }
+  .tituloLogin{
+    text-align: center;
+  }
+.form-group{
+    margin: 0.1em 1em ;
+}
+  .btn-primary {
+    width: 10em;
+    margin: 0.5em 8em ;
+  }
+  .contenedor-icono{
+    width: 3em;
+    height: 3em;
+    color: white;
+  }
+  .iconoMenu {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .filtros{
+    display: flex;
+    margin: 2em 20em;
+    width: 90em;
+}
+.buscar{
+    margin: 1em 0em;
+    width: 10em;
+    height: 2.3em;
+}
+.tabla{
+    width: 60em;
+    margin: 1em 20em
+}
+.crear{
+    margin: 1em 65em;
+}
+.m{
+    width: 1180px;
+    height: 600px;
+    position: absolute;
+    
+    left: 100px;
+    top:20px;
+   
+}
 
 
  
