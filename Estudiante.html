@@ -89,7 +89,7 @@
                     </div>  
               </div>
               <div class="col-sm-2 filtro">
-                    <div class="">
+                    <div class="" >
                         <label class="sep">Nombre Completo</label>
                     </div>
                     <div>
@@ -97,9 +97,16 @@
                     </div>
                 </div>
         
-                <button type="button" class="btn btn-primary buscar">Buscar</button>
+                <button type="button" class="btn btn-primary buscar" >Buscar</button>
             </div>
-            <button type="button" class="btn btn-primary crear">Crear</button>
+            <div class="modalContainer border border-dark" id="modalContainer" style="display: none;" >
+               
+                    <div class="botonGuardarRegistro">
+                    <button type="button" class="btn  btn-primary crear" onclick="cerrarPop()">Crear</button>
+                </div>
+              
+            </div>
+            <button type="button" class="btn btn-primary crear" onclick="myFunction()">Crear</button>
             
         
             <table class="table table-striped tabla border">
@@ -165,7 +172,7 @@
                     <td>prueba5@246.com</td>
                     <td>Programacion</td>
                     <td>
-                        <button type="button" class="btn btn-success">Actualizar</button>
+                        <button type="button" class="btn btn-success" >Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
@@ -173,5 +180,7 @@
               </table>
            
         </div>
+       
+      
 </body>
  

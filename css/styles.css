@@ -57,6 +57,22 @@
     top:20px;
    
 }
+.modalContainer {
+background-color: rgb(254, 254, 254);
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+pointer-events: none;
+top: 0;
+left: 0;
+height: 30em;
+width: 20em;
+margin: 0em 30em;
+}
 
+.botonCrearRegistro{
+    margin: 0em 2em;
+}
 
  

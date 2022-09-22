@@ -10,3 +10,12 @@ function login(){
         }
 
 }
+function myFunction() {
+   
+    //document.getElementById("modalContainer").style.display = none;
+    document.getElementById('modalContainer').style.display='block';
+  }
+  function cerrarPop(){
+    document.getElementById('modalContainer').style.display='none';
+}
+  
