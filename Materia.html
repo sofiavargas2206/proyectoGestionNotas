@@ -22,7 +22,7 @@
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
+        <li class="nav-item" class="nav-link text-white">
         <a href="Inicio.html" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
         Inicio
@@ -74,7 +74,7 @@
             <div class="filtros">
                 <div class="col-sm-2 filtro">
                     <div class="">
-                        <label class="sep">Id</label>
+                        <label class="sep">Carrera</label>
                     </div>
                     <div class="">
                         <input  class="sep">
@@ -82,97 +82,90 @@
                 </div>
                 <div class="col-sm-2 filtro">
                     <div class="">
-                        <label class="sep">N° Identificación</label>
+                        <label class="sep">Actividad</label>
                     </div>
                     <div class="">
                         <input class="">
                     </div>  
               </div>
               <div class="col-sm-2 filtro">
-                    <div class="" >
-                        <label class="sep">Nombre Completo</label>
+                    <div class="">
+                        <label class="sep">Docente</label>
                     </div>
                     <div>
                         <input  class="" >
                     </div>
                 </div>
         
-                <button type="button" class="btn btn-primary buscar" >Buscar</button>
+                <button type="button" class="btn btn-primary buscar">Buscar</button>
             </div>
-            <div class="modalContainer border border-dark" id="modalContainer" style="display: none;" >
-               
-                    <div class="botonGuardarRegistro">
-                    <button type="button" class="btn  btn-primary crear" onclick="cerrarPop()">Crear</button>
-                </div>
-              
-            </div>
-            <button type="button" class="btn btn-primary crear" onclick="myFunction()">Crear</button>
+            <button type="button" class="btn btn-primary crear">Crear</button>
             
         
             <table class="table table-striped tabla border">
                 <thead>
                   <tr>
-                    <th scope="col">Documento</th>
-                    <th scope="col">Nombres </th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Materias</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Docente </th>
+                    <th scope="col">Actividad</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Estudiante</th>
                     <th scope="col">Acción</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">123</th>
+                    <th scope="row">Programacion</th>
+                    <td>Albeiro de Jesus</td>
+                    <td>Crear html image</td>
+                    <td>4.5</td>
                     <td>anyly</td>
-                    <td>valderrama</td>
-                    <td>prueba1@123.com</td>
-                    <td>Programacion</td>
                     <td>
                     <button type="button" class="btn btn-success">Actualizar</button>
                     <button type="button" class="btn btn-danger">Inactivar</button>
                 </td>
                   </tr>
                   <tr>
-                    <th scope="row">789</th>
+                    <th scope="row">Programacion</th>
+                    <td>Albeiro de Jesus</td>
+                    <td>Crear css fuentes</td>
+                    <td>3</td>
                     <td>Sebastian</td>
-                    <td>Caceres</td>
-                    <td>prueba3@789.com</td>
-                    <td>Programacion</td>
                     <td>
                         <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">456</th>
+                    <th scope="row">Programacion</th>
+                    <td>David Solar</td>
+                    <td>Uso Java script</td>
+                    <td>4</td>
                     <td>Christian</td>
-                    <td>Poveda</td>
-                    <td>prueba2@456.com</td>
-                    <td>Programacion</td>
                     <td>
                         <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">135</th>
+                    <th scope="row">Programacion</th>
+                    <td>David Solar</td>
+                    <td>Reto 4</td>
+                    <td>4.5</td>
                     <td>Alejandro</td>
-                    <td>Jimenez</td>
-                    <td>prueba4@135.com</td>
-                    <td>Programacion</td>
                     <td>
                         <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">246</th>
+                    <th scope="row">Programacion</th>
+                    <td>Albeiro de Jesus</td>
+                    <td>Reto 5</td>
+                    <td>5</td>
                     <td>Sofia</td>
-                    <td>Vargas</td>
-                    <td>prueba5@246.com</td>
-                    <td>Programacion</td>
                     <td>
-                        <button type="button" class="btn btn-success" >Actualizar</button>
+                        <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
@@ -180,7 +173,4 @@
               </table>
            
         </div>
-       
-      
 </body>
- 
