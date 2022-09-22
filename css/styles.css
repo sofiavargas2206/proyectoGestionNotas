@@ -75,7 +75,7 @@ margin: 0em 30em;
 .botonCrearRegistro{
     margin: 0em 2em;
 }
-=======
+
 /*--------ACTIVIDADES---------------------*/
 .tabla1{
   width: 60em;
@@ -85,7 +85,7 @@ margin: 0em 30em;
   width: 1180px;
   height: 600px;
   position: absolute;
-  background-color: grey;
+  background-color: white;
   left: 300px;
   top: 20px;
   }
@@ -96,12 +96,14 @@ margin: 0em 30em;
   
   .actividades .filtroActividades .buscar{
   color: white;
+  background-color: white;
+  
   }
   
   .actividades .tablaActividades{
   padding: 20px 20px;
   text-align: left;
-  background-color: aliceblue;
+  background-color: white;
   border: 1px solid black;
   
   }
