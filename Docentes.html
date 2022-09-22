@@ -23,31 +23,31 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-        <a href="Inicio.html" class="nav-link text-white" aria-current="page">
+        <a href="#" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
         Inicio
         </a>
         </li>
         <li>
-        <a href="Estudiante.html" class="nav-link active">
+        <a href="Estudiante.html" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
         Estudiantes
         </a>
         </li>
         <li>
-        <a href="Docentes.html" class="nav-link text-white">
+        <a href="#" class="nav-link active">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
         Docentes
         </a>
         </li>
         <li>
-        <a href="Materia.html" class="nav-link text-white">
+        <a href="#" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
         Materias
         </a>
         </li>
         <li>
-        <a href="Actividades.html" class="nav-link text-white">
+        <a href="#" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
         Actividades
         </a>
@@ -74,7 +74,7 @@
             <div class="filtros">
                 <div class="col-sm-2 filtro">
                     <div class="">
-                        <label class="sep">Id</label>
+                        <label class="sep">Identificacion</label>
                     </div>
                     <div class="">
                         <input  class="sep">
@@ -82,97 +82,90 @@
                 </div>
                 <div class="col-sm-2 filtro">
                     <div class="">
-                        <label class="sep">N° Identificación</label>
+                        <label class="sep">Materia</label>
                     </div>
                     <div class="">
                         <input class="">
                     </div>  
               </div>
               <div class="col-sm-2 filtro">
-                    <div class="" >
-                        <label class="sep">Nombre Completo</label>
+                    <div class="">
+                        <label class="sep">Actividad</label>
                     </div>
                     <div>
                         <input  class="" >
                     </div>
                 </div>
         
-                <button type="button" class="btn btn-primary buscar" >Buscar</button>
+                <button type="button" class="btn btn-primary buscar">Buscar</button>
             </div>
-            <div class="modalContainer border border-dark" id="modalContainer" style="display: none;" >
-               
-                    <div class="botonGuardarRegistro">
-                    <button type="button" class="btn  btn-primary crear" onclick="cerrarPop()">Crear</button>
-                </div>
-              
-            </div>
-            <button type="button" class="btn btn-primary crear" onclick="myFunction()">Crear</button>
+            <button type="button" class="btn btn-primary crear">Crear</button>
             
         
             <table class="table table-striped tabla border">
                 <thead>
                   <tr>
-                    <th scope="col">Documento</th>
+                    <th scope="col">Identificacion</th>
                     <th scope="col">Nombres </th>
                     <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Materias</th>
+                    <th scope="col">Materia</th>
+                    <th scope="col">Actividad</th>
                     <th scope="col">Acción</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">123</th>
-                    <td>anyly</td>
-                    <td>valderrama</td>
-                    <td>prueba1@123.com</td>
+                    <th scope="row">43753702</th>
+                    <td>Anyly</td>
+                    <td>Valderrama</td>
                     <td>Programacion</td>
+                    <td>vectores</td>
                     <td>
                     <button type="button" class="btn btn-success">Actualizar</button>
                     <button type="button" class="btn btn-danger">Inactivar</button>
                 </td>
                   </tr>
                   <tr>
-                    <th scope="row">789</th>
+                    <th scope="row">78982370</th>
                     <td>Sebastian</td>
                     <td>Caceres</td>
-                    <td>prueba3@789.com</td>
                     <td>Programacion</td>
+                    <td>Matrices</td>
                     <td>
                         <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">456</th>
+                    <th scope="row">45678046</th>
                     <td>Christian</td>
                     <td>Poveda</td>
-                    <td>prueba2@456.com</td>
                     <td>Programacion</td>
+                    <td>Listas</td>
                     <td>
                         <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">135</th>
+                    <th scope="row">13535760</th>
                     <td>Alejandro</td>
                     <td>Jimenez</td>
-                    <td>prueba4@135.com</td>
                     <td>Programacion</td>
+                    <td>Matrices</td>
                     <td>
                         <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">246</th>
+                    <th scope="row">24635450</th>
                     <td>Sofia</td>
                     <td>Vargas</td>
-                    <td>prueba5@246.com</td>
                     <td>Programacion</td>
+                    <td>Bases de datos</td>
                     <td>
-                        <button type="button" class="btn btn-success" >Actualizar</button>
+                        <button type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger">Inactivar</button>
                     </td>
                   </tr>
@@ -180,7 +173,5 @@
               </table>
            
         </div>
-       
-      
 </body>
  
