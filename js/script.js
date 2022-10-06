@@ -19,17 +19,16 @@ function myFunction() {
     document.getElementById('modalContainer').style.display='none';
 }
   
-function Promedio(){
+function Promedio(myArray){
 
-  var parcial,final,promedio;
-	parcial = parseFloat(promtp("Parcial"));
-	final = parseFloat(promtp("Final"));
-	promedio = (parcial+final)/2;
-
-	if(promedio >= 50.5){
-		document.write("El promedio es "+promedio+" APROBADO");
-	}else{
-		document.write("El promedio es "+promedio+" DESAPROBADO");
-	}
-
+  var i = 0, summ = 0, ArrayLen = myArray.length;
+  while (i < ArrayLen) {
+    summ = summ + myArray[i++];
+    if(promedio >= 50.5){
+      document.write("El promedio es "+promedio+" APROBADO");
+    }else{
+      document.write("El promedio es "+promedio+" DESAPROBADO");
+    }
+  }
+    return summ / ArrayLen;
 }
