@@ -1,10 +1,17 @@
 
-body,html {
+body {
+ 
+/* Podrías añadir también aquí  overflow:hidden;  
   padding:0;
   margin:0;
-  height:100%;
-/* Podrías añadir también aquí:
-overflow:hidden; */
+  height:100%; */
+ 
+  height: 800px;
+  background-image: url("https://img.freepik.com/vector-gratis/copia-espacio-azul-circuitos-fondo-digital_23-2148821699.jpg?w=740&t=st=1665004186~exp=1665004786~hmac=718390e0ca465bc7f4f35df8ceb694b9d5cb7305ef9ca68eafea47727bb65fe2");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+
 }
 .abs-centdr {
   display: flex;
@@ -20,9 +27,7 @@ overflow:hidden; */
   background-color: rgb(247, 243, 243);
   
 }
-.body{
-  width: 90em;
-}
+
 .tituloLogin{
   text-align: center;
 }
@@ -54,6 +59,7 @@ overflow:hidden; */
 .tabla{
   width: 60em;
     margin: -27em 16em;
+    background-color: rgb(18, 72, 221);
 }
 .crear{
   margin: 1em 35em;
@@ -82,7 +88,7 @@ margin: 0em 30em;
 
 
   
-<<<<<<< HEAD
+/* HEAD*/
 .modalContainer {
 background-color: rgb(254, 254, 254);
 display: flex;
@@ -102,18 +108,21 @@ margin: 0em 30em;
 .contenedorPop{
 position: absolute;
 box-shadow: #000;
+
 }
-=======
+
 /*--------ACTIVIDADES---------------------*/
 .tabla1{
 width: 60em;
 margin: 1em 1em
+
+
 }
 .actividades{
 width: 1180px;
 height: 600px;
 position: absolute;
-background-color: grey;
+
 left: 300px;
 top: 20px;
 }
@@ -131,6 +140,7 @@ padding: 20px 20px;
 text-align: left;
 background-color: aliceblue;
 border: 1px solid black;
+
 
 }
 /*--------formulario---------------------*/
