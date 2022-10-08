@@ -61,36 +61,6 @@ def addPersona():
         return redirect(url_for('Estudiante'))
     return render_template('Estudiante.html')
 
-@app.route('/editPersona/<string:idPersona>',methods=['GET','POST'])
-def editPersona(idPersona):
-    if request.method=='POST':
-        nombres=request.form['nombresPersona']
-        apellidos=request.form['apellidosPersona']
-        tipoDocumento=request.form['tipoDocumentoPersona']
-        documento=request.form['identificacionPersona']
-        correo=request.form['correoPersona']
-        telefono=request.form['telefonoPersona']
-        rol=request.form['rolPersona']
-        con=sql.connect('BaseNotas.db')
-        cur=con.cursor()
-        cur.execute('Update users set nombres=?,apellidos=?,tipoIdentificacion=?,identificacion=?,telefono=?,email=?,idRol=?',(nombres,apellidos,tipoDocumento,documento,telefono,correo,rol))
-        con.commit()
-        flash('Usuario Guardado','success')
-        return redirect(url_for('Estudiante'))
-    con=sql.connect('BaseNotas.db')
-    con.row_factory=sql.Row
-    cur=con.cursor()
-    cur.execute('select * from users where idPersona=?',(idPersona))
-    data=cur.fetchone()
-    return render_template('Estudiante.html',datas=data)
-
-
-@app.route('/deletePersona',methods=['GET','POST'])
-def deletePersona():
-    return render_template('Estudiante.html')
-
-
-
 
 if __name__=='__main__':
     app.run(debug=True)
