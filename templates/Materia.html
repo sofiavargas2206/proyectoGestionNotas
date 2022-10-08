@@ -8,7 +8,7 @@
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
    
@@ -23,31 +23,31 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-    <a href="Inicio.html" class="nav-link text-white" aria-current="page">
+    <a href="{{url_for('Inicio')}}" class="nav-link text-white" aria-current="page">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
     Inicio
     </a>
     </li>
     <li>
-    <a href="Estudiante.html" class="nav-link active">
+    <a href="{{url_for('Estudiante')}}" class="nav-link active">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
     Estudiantes
     </a>
     </li>
     <li>
-    <a href="Docentes.html" class="nav-link text-white">
+    <a href="{{url_for('Docente')}}" class="nav-link text-white">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
     Docentes
     </a>
     </li>
     <li>
-    <a href="Materia.html" class="nav-link text-white">
+    <a href="{{url_for('Materias')}}" class="nav-link text-white">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
     Materias
     </a>
     </li>
     <li>
-    <a href="Actividades.html" class="nav-link text-white">
+    <a href="{{url_for('Actividades')}}" class="nav-link text-white">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
     Actividades
     </a>
@@ -55,9 +55,7 @@
     </ul>
     <hr>
     
-      
-    
-      </div>
+    </div>
       <div class="m">
         <div class="row filtros ">
           <div class="col ingreso">

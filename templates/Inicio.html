@@ -1,4 +1,4 @@
-{% block body %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +24,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-    <a href="Inicio.html" class="nav-link text-white" aria-current="page">
+    <a href="{{url_for('Inicio')}}" class="nav-link text-white" aria-current="page">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
     Inicio
     </a>
@@ -36,19 +36,19 @@
     </a>
     </li>
     <li>
-    <a href="Docentes.html" class="nav-link text-white">
+    <a href="{{url_for('Docente')}}" class="nav-link text-white">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
     Docentes
     </a>
     </li>
     <li>
-    <a href="Materia.html" class="nav-link text-white">
+    <a href="{{url_for('Materias')}}" class="nav-link text-white">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
     Materias
     </a>
     </li>
     <li>
-    <a href="Actividades.html" class="nav-link text-white">
+    <a href="{{url_for('Actividades')}}" class="nav-link text-white">
     <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
     Actividades
     </a>
@@ -59,4 +59,3 @@
     </div>
     </body>
     </html>
-    {% endblock  %} 

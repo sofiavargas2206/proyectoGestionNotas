@@ -5,8 +5,14 @@ app=Flask(__name__)
 app.secret_key='admin123'
 
 @app.route('/')
-@app.route('/inicio')
 
+
+@app.route('/Inicio')
+def Inicio():
+      return render_template('Inicio.html')
+
+
+@app.route('/Estudiante')
 def Estudiante():
     con=sql.connect('BaseNotas.db')
     con.row_factory=sql.Row
@@ -14,6 +20,25 @@ def Estudiante():
     cur.execute('select * from persona')
     data=cur.fetchall()
     return render_template('Estudiante.html',datas=data)
+
+
+@app.route('/Docente')
+def Docente():
+      return render_template('Docentes.html')
+
+
+@app.route('/Materias')
+def Materias():
+      return render_template('Materia.html')
+
+
+@app.route('/Actividades')
+def Actividades():
+      return render_template('Actividades.html')
+
+
+
+
 
 @app.route('/addPersona',methods=['GET','POST'])
 def addPersona():

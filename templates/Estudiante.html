@@ -16,50 +16,49 @@
 <body>
    
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" style="width: 11em; height: 39em;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-       <div class="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" contenedor-icono bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-              </svg>
-            </div>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-        <a href="Inicio.html" class="nav-link text-white" aria-current="page">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-        Inicio
-        </a>
-        </li>
-        <li>
-        <a href="Estudiante.html" class="nav-link active">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-        Estudiantes
-        </a>
-        </li>
-        <li>
-        <a href="Docentes.html" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-        Docentes
-        </a>
-        </li>
-        <li>
-        <a href="Materia.html" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-        Materias
-        </a>
-        </li>
-        <li>
-        <a href="Actividades.html" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-        Actividades
-        </a>
-        </li>
-        </ul>
-        <hr>
-        
-      
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+   <div class="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" contenedor-icono bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
         </div>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+    <a href="{{url_for('Inicio')}}" class="nav-link text-white" aria-current="page">
+    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+    Inicio
+    </a>
+    </li>
+    <li>
+    <a href="{{url_for('Estudiante')}}" class="nav-link active">
+    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+    Estudiantes
+    </a>
+    </li>
+    <li>
+    <a href="{{url_for('Docente')}}" class="nav-link text-white">
+    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+    Docentes
+    </a>
+    </li>
+    <li>
+    <a href="{{url_for('Materias')}}" class="nav-link text-white">
+    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+    Materias
+    </a>
+    </li>
+    <li>
+    <a href="{{url_for('Actividades')}}" class="nav-link text-white">
+    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+    Actividades
+    </a>
+    </li>
+    </ul>
+    <hr>
+    
+    </div>
         <div class="m">
           <div class="row filtros ">
             <div class="col ingreso">
