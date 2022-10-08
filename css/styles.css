@@ -1,0 +1,214 @@
+
+body {
+ 
+/* Podrías añadir también aquí  overflow:hidden;  
+  padding:0;
+  margin:0;
+  height:100%; */
+ 
+  height: 800px;
+  background-image: url("https://img.freepik.com/vector-gratis/copia-espacio-azul-circuitos-fondo-digital_23-2148821699.jpg?w=740&t=st=1665004186~exp=1665004786~hmac=718390e0ca465bc7f4f35df8ceb694b9d5cb7305ef9ca68eafea47727bb65fe2");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+
+}
+.abs-centdr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+ 
+}
+
+.formu{
+  width: 30em;
+  border-radius: 1em;
+  background-color: rgb(247, 243, 243);
+  
+}
+
+.tituloLogin{
+  text-align: center;
+}
+.form-group{
+  margin: 0.1em 1em ;
+}
+.btn-primary {
+  width: 10em;
+  margin: 0.5em 8em ;
+}
+.contenedor-icono{
+  width: 3em;
+  height: 3em;
+  color: white;
+}
+.iconoMenu {
+  width: 1.5em;
+  height: 1.5em;
+}
+.filtros{
+  display: flex;
+  margin: 1em 12em;
+  width: 49em;
+}
+
+.buscar{
+  margin: 1em 1em;
+}
+.tabla{
+  width: 60em;
+    margin: -27em 16em;
+    background-color: rgb(18, 72, 221);
+}
+.crear{
+  margin: 1em 35em;
+  width: 4em;
+}
+.m{
+  position: absolute;
+  top: 20px;
+  margin: 0em 7em;
+  width: 10em;
+ 
+}
+.modalContainer {
+background-color: rgb(254, 254, 254);
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+pointer-events: none;
+top: 0;
+left: 0;
+height: 30em;
+width: 20em;
+margin: 0em 30em;
+}
+
+
+  
+/* HEAD*/
+.modalContainer {
+background-color: rgb(254, 254, 254);
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+top: 0;
+left: 0;
+height: 30em;
+width: 20em;
+margin: 0em 30em;
+}
+
+.botonCrearRegistro{
+  margin: 0em 2em;
+}
+.contenedorPop{
+position: absolute;
+box-shadow: #000;
+
+}
+
+/*--------ACTIVIDADES---------------------*/
+.tabla1{
+width: 60em;
+margin: 1em 1em
+
+
+}
+.actividades{
+width: 1180px;
+height: 600px;
+position: absolute;
+
+left: 300px;
+top: 20px;
+}
+
+.actividades form{
+padding: 20px 20px;
+}
+
+.actividades .filtroActividades .buscar{
+color: white;
+}
+
+.actividades .tablaActividades{
+padding: 20px 20px;
+text-align: left;
+background-color: aliceblue;
+border: 1px solid black;
+
+
+}
+/*--------formulario---------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.form-register {
+  width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+}
+
+.form-register h4 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.controls {
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #1f53c5;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+
+.form-register p {
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+}
+
+.form-register a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.form-register .botons {
+  width: 100%;
+  background: #1f53c5;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.dialogo {
+  transform: none;
+  width: 87em;
+  height: 80em;
+}
