@@ -18,10 +18,8 @@ function myFunction() {
   function cerrarPop(){
     document.getElementById('modalContainer').style.display='none';
 }
-<<<<<<< HEAD:static/js/script.js
 
   
-=======
   
 function Promedio(myArray){
 
@@ -36,4 +34,3 @@ function Promedio(myArray){
   }
     return summ / ArrayLen;
 }
->>>>>>> 9da5a8800d937ae3cfbfdaf0191d0cdb11533b7a:js/script.js
