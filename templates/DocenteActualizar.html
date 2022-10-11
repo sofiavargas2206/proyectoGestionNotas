@@ -90,7 +90,7 @@
 
       <div class="mact">
         
-        <form class="border-dark" action="{{url_for('editPersona',idPersona=datas.IDPERSONA)}}" method="post" >
+        <form class="border-dark" action="{{url_for('editDocente',idPersona=datas.IDPERSONA)}}" method="post" >
           <div class="row">
             <div class="col">
               Nombres
@@ -108,7 +108,7 @@
               </div>
               <div class="col">
                 numero Documento
-                <input type="text"  id='tipoDocumentoPersona' readonly disabled value="{{datas.IDENTIFICACION}}" class="form-control" name='documentoPersona' placeholder="numero de documento">
+                <input type="text"  id='documentoPersona' readonly value="{{datas.IDENTIFICACION}}" class="form-control" name='documentoPersona' placeholder="numero de documento">
             </div>
           </div>
           <div class="row">

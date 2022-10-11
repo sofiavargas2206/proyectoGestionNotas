@@ -22,7 +22,7 @@ def Estudiante():
     con=sql.connect('BaseNotas.db')
     con.row_factory=sql.Row
     cur=con.cursor()
-    cur.execute('select * from persona where estado="Activo"')
+    cur.execute('select * from persona where estado="Activo" and idRol=1')
     data=cur.fetchall()
     return render_template('Estudiante.html',datas=data)
 
@@ -35,31 +35,13 @@ def consultaEstudiante():
         con.row_factory=sql.Row
         cur=con.cursor()
         if documentoFiltro !='' or nombres!='':
-            cur.execute('select * from persona WHERE identificacion=? or nombres=? and estado="Activo"',(documentoFiltro,nombres) )
+            cur.execute('select * from persona WHERE identificacion=? or nombres=? and estado="Activo" and idRol=1',(documentoFiltro,nombres) )
            
         else:
-            cur.execute('select * from persona')  
+            cur.execute('select * from persona where idRol=1')  
            
         data=cur.fetchall()
     return render_template('Estudiante.html',datas=data)
-
-@app.route('/Docente')
-def Docente():
-      return render_template('Docentes.html')
-
-
-@app.route('/Materias')
-def Materias():
-      return render_template('Materia.html')
-
-
-@app.route('/Actividades')
-def Actividades():
-      return render_template('Actividades.html')
-
-
-
-
 
 @app.route('/addPersona',methods=['GET','POST'])
 def addPersona():
@@ -70,13 +52,13 @@ def addPersona():
         documento=request.form['identificacionPersona']
         correo=request.form['correoPersona']
         telefono=request.form['telefonoPersona']
-        rol=request.form['rolPersona']
+        idRol=request.form['rolPersona']
         fechaRegistro= datetime.now()
         fechaActualizacion= datetime.now()
         estado='Activo'
         con=sql.connect('BaseNotas.db')
         cur=con.cursor()
-        cur.execute('insert into persona (nombres,apellidos,tipoIdentificacion,identificacion,telefono,email,fechaRegistro,fechaActualizacion,idRol,estado) values (?,?,?,?,?,?,?,?,?,?)',(nombres,apellidos,tipoDocumento,documento,telefono,correo,fechaRegistro,fechaActualizacion,rol,estado))
+        cur.execute('insert into persona (nombres,apellidos,tipoIdentificacion,identificacion,telefono,email,fechaRegistro,fechaActualizacion,idRol,estado) values (?,?,?,?,?,?,?,?,?,?)',(nombres,apellidos,tipoDocumento,documento,telefono,correo,fechaRegistro,fechaActualizacion,idRol,estado))
         con.commit()
         flash('Usuario Guardado','success')
         return redirect(url_for('Estudiante'))
@@ -105,7 +87,7 @@ def editPersona(idPersona):
     cur=con.cursor()
     cur.execute('select * from persona where idPersona=?',(idPersona))
     data=cur.fetchone()
-    return render_template('EstudianteActualizar.html',datas=data)
+    return render_template('PersonaActualizar.html',datas=data)
 
     
 
@@ -118,6 +100,107 @@ def deletePersona(idPersona):
     con.commit()
     flash('Usuario Eliminado','warning')
     return redirect(url_for('Estudiante'))
+
+
+
+"---------------docente-----------------------"
+@app.route('/Docente')
+def Docente():
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from persona where estado="Activo" and idRol=2')
+    data=cur.fetchall()
+    return render_template('Docentes.html')
+
+@app.route('/addDocente',methods=['GET','POST'])
+def addDocente():
+    if request.method=='POST':
+        nombres=request.form['nombresPersona']
+        apellidos=request.form['apellidosPersona']
+        tipoDocumento=request.form['tipoDocumentoPersona']
+        documento=request.form['identificacionPersona']
+        correo=request.form['correoPersona']
+        telefono=request.form['telefonoPersona']
+        idRol=request.form['rolPersona']
+        fechaRegistro= datetime.now()
+        fechaActualizacion= datetime.now()
+        estado='Activo'
+        con=sql.connect('BaseNotas.db')
+        cur=con.cursor()
+        cur.execute('insert into persona (nombres,apellidos,tipoIdentificacion,identificacion,telefono,email,fechaRegistro,fechaActualizacion,idRol,estado) values (?,?,?,?,?,?,?,?,?,?)',(nombres,apellidos,tipoDocumento,documento,telefono,correo,fechaRegistro,fechaActualizacion,idRol,estado))
+        con.commit()
+        flash('Usuario Guardado','success')
+        return redirect(url_for('Docente'))
+    return render_template('Docente.html')
+
+@app.route('/editDocente/<string:idPersona>',methods=['GET','POST'])
+def editDocente(idPersona):
+    if request.method == 'POST':
+        
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        error=None
+        nombres=request.form['nombresPersona']
+        apellidos=request.form['apellidosPersona']
+        tipoDocumento=request.form['tipoDocumentoPersona']
+        documento=request.form['documentoPersona']
+        correo=request.form['correoPersona']
+        telefono=request.form['telefonoPersona']
+        cur=con.cursor()
+        cur.execute('update persona set nombres=?,apellidos=?,tipoIdentificacion=?,identificacion=?,telefono=?,email=? where idPersona=?',(nombres,apellidos,tipoDocumento,documento,telefono,correo,idPersona))
+        con.commit()
+        return redirect(url_for('Docente'))
+
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from persona where idPersona=?',(idPersona))
+    data=cur.fetchone()
+    return render_template('DocenteActualizar.html',datas=data)
+
+    
+
+
+@app.route('/deleteDocente/<string:idPersona>',methods=['GET'])
+def deleteDocente(idPersona):
+    con=sql.connect('BaseNotas.db')
+    cur=con.cursor()
+    cur.execute('update persona set estado="Inactivo" where idPersona=?',(idPersona))
+    con.commit()
+    flash('Usuario Eliminado','warning')
+    return redirect(url_for('Docente'))
+
+@app.route('/consultaDocente',methods=['GET','POST'])
+def consultaDocente():      
+    if request.method == 'POST':
+        documentoFiltro=request.form['documentoFiltro']
+        nombres=request.form['nombresFiltro']
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        cur=con.cursor()
+        if documentoFiltro !='' or nombres!='':
+            cur.execute('select * from persona WHERE identificacion=? or nombres=? and estado="Activo" and idRol=2',(documentoFiltro,nombres) )
+           
+        else:
+            cur.execute('select * from persona where estado="Activo" and idRol=2') 
+           
+        data=cur.fetchall()
+    return render_template('Docentes.html',datas=data)
+
+
+
+@app.route('/Materias')
+def Materias():
+      return render_template('Materia.html')
+
+
+@app.route('/Actividades')
+def Actividades():
+      return render_template('Actividades.html')
+
+
+
 
 
 
