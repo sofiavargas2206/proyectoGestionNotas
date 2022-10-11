@@ -81,8 +81,6 @@ margin: 0em 30em;
 }
 
 
-  
-<<<<<<< HEAD
 .modalContainer {
 background-color: rgb(254, 254, 254);
 display: flex;
@@ -103,7 +101,7 @@ margin: 0em 30em;
 position: absolute;
 box-shadow: #000;
 }
-=======
+
 /*--------ACTIVIDADES---------------------*/
 .tabla1{
 width: 60em;
@@ -201,4 +199,14 @@ border: 1px solid black;
   transform: none;
   width: 87em;
   height: 80em;
+}
+
+.mact{
+  position: absolute;
+  top: 20px;
+  margin: 8em 22em;
+  width: 42em;
+}
+.actuboton{
+  margin: 2em 18em;
 }
