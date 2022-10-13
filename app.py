@@ -101,6 +101,14 @@ def deletePersona(idPersona):
     flash('Usuario Eliminado','warning')
     return redirect(url_for('Estudiante'))
 
+@app.route('/addMateriaEstudiante',methods=['GET','POST'])
+def addMateriaEstudiante():
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from materias where estado="Activo" and idRol=1')
+    data=cur.fetchall()
+    return render_template('Estudiante.html',datas=data)
 
 
 "---------------docente-----------------------"
@@ -190,10 +198,87 @@ def consultaDocente():
 
 
 
+"--------------Materias------------------"
+
 @app.route('/Materias')
 def Materias():
-      return render_template('Materia.html')
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from materia ')
+    data=cur.fetchall()
+    return render_template('Materia.html')
 
+@app.route('/addMateria',methods=['GET','POST'])
+def addMateria():
+    if request.method=='POST':
+        nombre=request.form['nombreMateria']
+        fechaInicio=request.form['fechaInicio']
+        fechaFin=request.form['fechaFin']
+        fechaRegistro= datetime.now()
+        fechaActualizacion= datetime.now()
+        con=sql.connect('BaseNotas.db')
+        cur=con.cursor()
+        cur.execute('insert into materia (nombreMateria,fechaInicio,fechaFin,fechaRegistro,fechaActualizacion) values (?,?,?,?,?)',(nombre,fechaInicio,fechaFin,fechaRegistro,fechaActualizacion))
+        con.commit()
+        flash('Usuario Guardado','success')
+        return redirect(url_for('Materias'))
+    return render_template('Materia.html')
+
+@app.route('/editMateria/<string:idMateria>',methods=['GET','POST'])
+def editMateria(idMateria):
+    if request.method == 'POST':
+        
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        error=None
+        nombre=request.form['nombreMateria']
+        fechaInicio=request.form['fechaInicio']
+        fechaFin=request.form['fechaFin']
+        fechaActualizacion= datetime.now()
+        cur=con.cursor()
+        cur.execute('update materia set nombreMateria=?,fechaInicio=?,fechaFin=?, fechaActualizacion=? where idMateria=?',(nombre,fechaInicio,fechaFin,fechaActualizacion,idMateria))
+        con.commit()
+        return redirect(url_for('Materias'))
+
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from materia where idMateria=?',(idMateria))
+    data=cur.fetchone()
+    return render_template('MateriaActualizar.html',datas=data)
+
+    
+
+
+@app.route('/deleteMateria/<string:idMateria>',methods=['GET'])
+def deleteMateria(idMateria):
+    con=sql.connect('BaseNotas.db')
+    cur=con.cursor()
+    cur.execute('delete from materia where idMateria=?',(idMateria))
+    con.commit()
+    flash('Usuario Eliminado','warning')
+    return redirect(url_for('Materias'))
+
+
+
+@app.route('/consultaMateria',methods=['GET','POST'])
+def consultaMateria():      
+    if request.method == 'POST':
+        IdenFiltro=request.form['idMateria']
+        Materia=request.form['materiaFiltro']
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        cur=con.cursor()
+        if IdenFiltro !='' or Materia!='':
+            cur.execute('select * from materia WHERE idMateria=? or nombreMateria=?',(IdenFiltro,Materia) )
+           
+        else:
+            cur.execute('select * from materia') 
+        data=cur.fetchall()
+    return render_template('Materia.html',datas=data)
+    
+    
 
 @app.route('/Actividades')
 def Actividades():

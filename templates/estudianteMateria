@@ -90,28 +90,41 @@
 
       <div class="mact">
         
-        <form class="border-dark" action="{{url_for('editMateria',idMateria=datas.IDMATERIA)}}" method="post" >
+        <form class="border-dark" action="{{url_for('estudianteMateria',idPersona=datas.IDPERSONA)}}" method="post" >
           <div class="row">
             <div class="col">
-              Materia
-              <input type="text" id='nombreMateria' name='nombreMateria' value="{{datas.NOMBREMATERIA}}" class="form-control" placeholder="Nombres Completos">
+              Nombres
+              <input type="text" id='nombresPersona' name='nombresPersona' value="{{datas.NOMBRES}}" class="form-control" placeholder="Nombres Completos">
             </div>
             <div class="col">
-              fecha inicio 
-              <input type="date" id='fechaInicio' name='fechaInicio' value="{{datas.FECHAINICIO}}" class="form-control" placeholder="Apellidos Completos">
+              Apellidos
+              <input type="text" id='apellidosPersona' name='apellidosPersona' value="{{datas.APELLIDOS}}" class="form-control" placeholder="Apellidos Completos">
           </div>
         </div>
           <div class="row">
           <div class="col">
-                fecha fin
-                <input type="date" id='fechaFin' class='form-control' name='fechaFin'  value="{{datas.FECHAFIN}}">
+                Tipo Documento
+                <input type="text" id='tipoDocumentoPersona' class='form-control' name='tipoDocumentoPersona'  value="{{datas.TIPOIDENTIFICACION}}">
               </div>
-         
+              <div class="col">
+                numero Documento
+                <input type="text"  id='tipoDocumentoPersona' readonly  value="{{datas.IDENTIFICACION}}" class="form-control" name='documentoPersona' placeholder="numero de documento">
+            </div>
           </div>
-          
+          <div class="row">
+            <div class="col">
+              correo electronico
+              <input type="text"  id='correoPersona' value="{{datas.EMAIL}}" class="form-control" name='correoPersona' placeholder="correo">
+            </div>
+      
+            <div class="col">
+              Numero Celular
+              <input type="text" id='telefonoPersona' name='telefonoPersona'  value="{{datas.TELEFONO}}" class="form-control" placeholder="Celular">
+            </div>
+            </div>
             <div class="row">
             <button type="submit" id="actuboton" title="Actualizar" class="btn btn-primary buscar actuboton">Actualizar</button>
-            <a href="{{url_for('Materias')}}" id='actuboton' class="btn btn-danger">Cancelar</a>  
+            <a href="{{url_for('Estudiante')}}" id='actuboton' class="btn btn-danger">Cancelar</a>  
           </div>
         </div>
         </form>
