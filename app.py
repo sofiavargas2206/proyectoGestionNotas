@@ -228,7 +228,6 @@ def addMateria():
 @app.route('/editMateria/<string:idMateria>',methods=['GET','POST'])
 def editMateria(idMateria):
     if request.method == 'POST':
-        
         con=sql.connect('BaseNotas.db')
         con.row_factory=sql.Row
         error=None
