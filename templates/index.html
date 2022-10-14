@@ -1,36 +1,207 @@
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
-</head>
-<body id="bodyLogin">
-    <div class="container" id="contenedorLogin">
-        <div class="abs-centdr p-5">
-          <form action="#" method="post"  id="formularioLogin " class="border border-dark p-5 formu">
-            <h3 class="tituloLogin">Iniciar sesion</h3>
-            <br />
-            <div class="form-group ">
-              <label  class="labelLogin">Usuario</label>
-              <input  name="email" id="usuario" class="form-control inputLogin border-dark"><br />
-            </div>
-            <div class="form-group">
-              <label for="password" class="labelLogin">Password</label>
-              <input type="password" name="password" id="contrasenia" class="form-control inputLogin  border-dark"><br>
-            </div>
-            <button type="submit" class="btn btn-primary  "  onclick="login()" id="botonLogin">Login</button>
-          </form>
-        </div>
-      </div>
-      <
-</body>
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Gestor de Notas G6 - Uninorte - NRC2141</title>
+        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='#' rel='stylesheet'>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <style>::-webkit-scrollbar {
+          width: 8px;
+        }
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1; 
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #888; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        } body{
 
-</html>
+background-color: rgb(57, 138, 243);
+}
+
+
+.card{
+
+width: 600px;
+height: 500px;
+border:none;
+
+}
+
+
+.btr{
+
+border-top-right-radius: 5px !important;
+}
+
+
+.btl{
+
+border-top-left-radius: 5px !important;
+}
+
+.btn-dark {
+color: #fff;
+background-color: #0d6efd;
+border-color: #0d6efd;
+}
+
+
+.btn-dark:hover {
+color: #fff;
+background-color: #0d6efd;
+border-color: #0d6efd;
+}
+
+
+.nav-pills{
+
+display:table !important;
+width:100%;
+}
+
+.nav-pills .nav-link {
+border-radius: 0px;
+border-bottom: 1px solid #0d6efd40;
+
+}
+
+.nav-item{
+display: table-cell;
+background: #0d6efd2e;
+}
+
+
+.form{
+
+padding: 10px;
+height: 300px;
+}
+
+.form input{
+
+margin-bottom: 12px;
+border-radius: 3px;
+}
+
+
+.form input:focus{
+
+box-shadow: none;
+}
+
+
+.form button{
+
+margin-top: 20px;
+}</style>
+        </head>
+        <body className='snippet-body'>
+        <div class="d-flex justify-content-center align-items-center vh-100">
+
+
+<div class="card">
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+<li class="nav-item text-center">
+<a class="nav-link active btl" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Inicio</a>
+</li>
+<li class="nav-item text-center">
+<a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Registro</a>
+</li>
+<li class="nav-item text-center">
+<a class="nav-link btr" id="pills-profile-tab2" data-toggle="pill" href="#pills-profile2" role="tab" aria-controls="pills-profile" aria-selected="false">Validacion Codigo</a>
+</li>
+
+</ul>
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+<div class="form px-5 pt-100">
+
+<form action="validarUsuario" method="POST" >
+<div class="d-flex justify-content-center ">
+<img src="{{ url_for('static', filename='images/login-icon.png') }}" alt="login-icon" style="height: 7rem" > 
+</div>
+<br>
+
+<div class="input-group">
+<div class="input-group-text">
+  <label  class="labelLogin"></label>
+  <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="user_icon" style="height: 2rem">
+  </div>
+  <input type="text" required name="txtusuario" id='txtusuario' class="form-control inputLogin" placeholder="Usuario">
+</div>
+<br>
+<div class="input-group">
+<div class="form-group input-group-text">
+  <label for="password" class="labelLogin"></label>
+  <img src="{{ url_for('static', filename='images/pass_icon.png') }}" alt="pass_icon" style="height: 2rem" onmouseover="mostrarPassword();" onmouseout="ocultarPassword();">
+  </div>
+  <input type="password" required name="txtpass" id="txtpass" class="form-control" placeholder="Password">
+</div>
+
+<div>
+<button type="submit" class="btn btn-dark btn-block">INICIAR SESION</button>
+</div>
+
+</form>
+</div>
+
+</div>
+
+<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+<div class="form px-4">
+<form action="registrarUsuario" method="POST" >
+<div class="d-flex justify-content-center ">
+<img src="{{ url_for('static', filename='images/regis_icon.png') }}" alt="regis-icon" style="height: 5rem"> 
+</div>
+<input required type="text" name="user" id="user"  class="form-control" placeholder="Usuario">
+<input required type="text" id="txtnombre" name="txtnombre" name="" class="form-control" placeholder="Nombres">
+<input required type="email" name="txtusuario2registro" id="txtusuario2registro"  class="form-control" placeholder="Email">
+<div class="input-group">
+<input required type="password" name="txtpassregistro" id="txtpassregistro" class="form-control" placeholder="Password">
+<div class="form-group input-group-text">
+  <img src="{{ url_for('static', filename='images/view.png') }}"  alt="view" onmouseover="mostrarPassword();" onmouseout="ocultarPassword();" style="height: 2rem" />
+</div>
+</div>
+
+<button type="submit" class="btn btn-dark btn-block">Registrarse</button>
+</form>
+</div>
+</div>
+
+<div class="tab-pane fade" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+<div class="form px-4">
+
+<form action="activarUsuario" method="POST">
+<input required type="text" id="txtcodigo" name="txtcodigo" name="" class="form-control" placeholder="Codigo de Verificacion">
+
+<button type="submit" class="btn btn-dark btn-block">Validar</button>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+        </body>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/scripts.js') }}"></script>
+    </html>
