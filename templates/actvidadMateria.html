@@ -89,44 +89,41 @@
       
 
       <div class="mact">
-        
-        <form class="border-dark" action="{{url_for('estudianteMateria',idPersona=datas.IDPERSONA)}}" method="post" >
-          <div class="row">
-            <div class="col">
-              Nombres
-              <input type="text" id='nombresPersona' name='nombresPersona' value="{{datas.NOMBRES}}" class="form-control" placeholder="Nombres Completos">
-            </div>
-            <div class="col">
-              Apellidos
-              <input type="text" id='apellidosPersona' name='apellidosPersona' value="{{datas.APELLIDOS}}" class="form-control" placeholder="Apellidos Completos">
+        <form action="{{url_for('addActividadMateria')}}" method="post" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Vinculacion Estudiante -Materia</h5><br>
           </div>
-        </div>
-          <div class="row">
-          <div class="col">
-                Tipo Documento
-                <input type="text" id='tipoDocumentoPersona' class='form-control' name='tipoDocumentoPersona'  value="{{datas.TIPOIDENTIFICACION}}">
+          <div class="modal-body">
+            <div class="row">
+            <div class="col">
+              Materias
+              <select class="form-select form-select"  name='materia'  aria-label=".form-select-sm example" important>
+                <option value="0">Selecciona la materia........</option>
+               
+                {%for row in datas%}
+                <option value="{{row.IDMATERIA}}">{{row.NOMBREMATERIA}}</option>
+                   {%endfor%}
+  
+              </select>
               </div>
               <div class="col">
-                numero Documento
-                <input type="text"  id='tipoDocumentoPersona' readonly  value="{{datas.IDENTIFICACION}}" class="form-control" name='documentoPersona' placeholder="numero de documento">
+                Actividades
+              <select class="form-select form-select"  name='actividad'  aria-label=".form-select-sm example" important>
+                <option value="0">Selecciona la actividad........</option>
+                {%for row in datas2%}
+                <option value="{{row.IDACTIVIDAD}}">{{row.NOMBREACTIVIDAD}}</option>
+                   {%endfor%}
+  
+              </select>
             </div>
           </div>
+          
+          
           <div class="row">
-            <div class="col">
-              correo electronico
-              <input type="text"  id='correoPersona' value="{{datas.EMAIL}}" class="form-control" name='correoPersona' placeholder="correo">
-            </div>
-      
-            <div class="col">
-              Numero Celular
-              <input type="text" id='telefonoPersona' name='telefonoPersona'  value="{{datas.TELEFONO}}" class="form-control" placeholder="Celular">
-            </div>
-            </div>
-            <div class="row">
             <button type="submit" id="actuboton" title="Actualizar" class="btn btn-primary buscar actuboton">Actualizar</button>
             <a href="{{url_for('Estudiante')}}" id='actuboton' class="btn btn-danger">Cancelar</a>  
           </div>
-        </div>
-        </form>
+      </form> 
+      
       </div>
       {% endblock %}

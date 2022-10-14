@@ -22,7 +22,7 @@ def Estudiante():
     con=sql.connect('BaseNotas.db')
     con.row_factory=sql.Row
     cur=con.cursor()
-    cur.execute('select * from persona where estado="Activo" and idRol=1')
+    cur.execute("select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona left JOIN materia m ON mp.materia = m.idMateria where p.idRol=1")   
     data=cur.fetchall()
     return render_template('Estudiante.html',datas=data)
 
@@ -35,10 +35,10 @@ def consultaEstudiante():
         con.row_factory=sql.Row
         cur=con.cursor()
         if documentoFiltro !='' or nombres!='':
-            cur.execute('select * from persona WHERE identificacion=? or nombres=? and estado="Activo" and idRol=1',(documentoFiltro,nombres) )
+            cur.execute("select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona LEFT JOIN materia m ON mp.materia = m.idMateria WHERE p.identificacion=? or p.nombres=? and p.estado='Activo' and p.idRol=1",(documentoFiltro,nombres) )
            
         else:
-            cur.execute('select * from persona where idRol=1')  
+            cur.execute("select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona LEFT JOIN materia m ON mp.materia = m.idMateria where p.idRol=1")  
            
         data=cur.fetchall()
     return render_template('Estudiante.html',datas=data)
@@ -103,21 +103,64 @@ def deletePersona(idPersona):
 
 @app.route('/addMateriaEstudiante',methods=['GET','POST'])
 def addMateriaEstudiante():
+    if request.method == 'POST':
+        
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        error=None
+        materia=request.form['materia']
+        estudiante=request.form['estudiante']
+        cur=con.cursor()
+        cur.execute('insert into materiaPersona (persona,materia) values (?,?)',(estudiante,materia))
+        con.commit()
+        return redirect(url_for('Estudiante'))
+
     con=sql.connect('BaseNotas.db')
     con.row_factory=sql.Row
     cur=con.cursor()
-    cur.execute('select * from materias where estado="Activo" and idRol=1')
+    cur.execute('select * from materia')
     data=cur.fetchall()
-    return render_template('Estudiante.html',datas=data)
+    con2=sql.connect('BaseNotas.db')
+    con2.row_factory=sql.Row
+    cur2=con2.cursor()
+    cur2.execute("select idPersona, identificacion|| '-' ||nombres|| ' ' ||apellidos as persona from persona where idRol=1")
+    data2=cur2.fetchall()
+    return render_template('estudianteMateria.html',datas=data, datas2=data2)
 
 
 "---------------docente-----------------------"
+@app.route('/addMateriaDocente',methods=['GET','POST'])
+def addMateriaDocente():
+    if request.method == 'POST':
+        
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        error=None
+        materia=request.form['materia']
+        estudiante=request.form['estudiante']
+        cur=con.cursor()
+        cur.execute('insert into materiaPersona (persona,materia) values (?,?)',(estudiante,materia))
+        con.commit()
+        return redirect(url_for('Docente'))
+
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from materia')
+    data=cur.fetchall()
+    con2=sql.connect('BaseNotas.db')
+    con2.row_factory=sql.Row
+    cur2=con2.cursor()
+    cur2.execute("select idPersona, identificacion|| '-' ||nombres|| ' ' ||apellidos as persona from persona where idRol=2")
+    data2=cur2.fetchall()
+    return render_template('DocenteMateria.html',datas=data, datas2=data2)
+
 @app.route('/Docente')
 def Docente():
     con=sql.connect('BaseNotas.db')
     con.row_factory=sql.Row
     cur=con.cursor()
-    cur.execute('select * from persona where estado="Activo" and idRol=2')
+    cur.execute('select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona left JOIN materia m ON mp.materia = m.idMateria where p.idRol=2 and p.estado="Activo"')
     data=cur.fetchall()
     return render_template('Docentes.html')
 
@@ -188,10 +231,10 @@ def consultaDocente():
         con.row_factory=sql.Row
         cur=con.cursor()
         if documentoFiltro !='' or nombres!='':
-            cur.execute('select * from persona WHERE identificacion=? or nombres=? and estado="Activo" and idRol=2',(documentoFiltro,nombres) )
+            cur.execute('select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona left JOIN materia m ON mp.materia = m.idMateria WHERE identificacion=? or nombres=? and p.estado="Activo" and p,idRol=2',(documentoFiltro,nombres) )
            
         else:
-            cur.execute('select * from persona where estado="Activo" and idRol=2') 
+            cur.execute('select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona left JOIN materia m ON mp.materia = m.idMateria where p.idRol=2 and p.estado="Activo"') 
            
         data=cur.fetchall()
     return render_template('Docentes.html',datas=data)
@@ -276,14 +319,107 @@ def consultaMateria():
             cur.execute('select * from materia') 
         data=cur.fetchall()
     return render_template('Materia.html',datas=data)
-    
-    
 
+@app.route('/addActividadMateria',methods=['GET','POST'])
+def addActividadMateria():
+    if request.method == 'POST':
+        
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        error=None
+        materia=request.form['materia']
+        actividad=request.form['actividad']
+        cur=con.cursor()
+        cur.execute('insert into materiaActividad (actividad,materia) values (?,?)',(actividad,materia))
+        con.commit()
+        return redirect(url_for('Docente'))
+
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from materia')
+    data=cur.fetchall()
+    con2=sql.connect('BaseNotas.db')
+    con2.row_factory=sql.Row
+    cur2=con2.cursor()
+    cur2.execute("select * from actividad")
+    data2=cur2.fetchall()
+    return render_template('actvidadMateria.html',datas=data, datas2=data2)
+
+    
+"----------------------actividades-------------------------" 
 @app.route('/Actividades')
 def Actividades():
-      return render_template('Actividades.html')
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from actividad  ')
+    data=cur.fetchall()
+    return render_template('Actividades.html')
+
+@app.route('/addActividad',methods=['GET','POST'])
+def addActividad():
+    if request.method=='POST':
+        actividad=request.form['nombreActvidad']
+        descripcion=request.form['descripcionActividad']
+        fechaRegistro= datetime.now()
+        fechaActualizacion= datetime.now()
+        con=sql.connect('BaseNotas.db')
+        cur=con.cursor()
+        cur.execute('insert into actividad (nombreActividad, descripcionActvidad,fechaRegistro,fechaActualizacion) values (?,?,?,?)',(actividad,descripcion,fechaRegistro,fechaActualizacion))
+        con.commit()
+        flash('Usuario Guardado','success')
+        return redirect(url_for('Actividades'))
+    return render_template('Actividades.html')
+
+@app.route('/editActividad/<string:idActividad>',methods=['GET','POST'])
+def editActividad(idActividad):
+    if request.method == 'POST':
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        error=None
+        actividad=request.form['nombreActvidad']
+        descripcion=request.form['descripcionActividad']
+        fechaRegistro= datetime.now()
+        cur=con.cursor()
+        cur.execute('update actividad set nombreActividad=?,descripcionActvidad=?,fechaActualizacion=? where idActvidad=?',(actividad,descripcion,fechaRegistro,idActividad))
+        con.commit()
+        return redirect(url_for('Actividades'))
+
+    con=sql.connect('BaseNotas.db')
+    con.row_factory=sql.Row
+    cur=con.cursor()
+    cur.execute('select * from actividad where idActvidad=?',(idActividad))
+    data=cur.fetchone()
+    return render_template('ActividadActualizar.html',datas=data)
+
+    
 
 
+@app.route('/deleteActividad/<string:idActividad>',methods=['GET'])
+def deleteActividad(idActividad):
+    con=sql.connect('BaseNotas.db')
+    cur=con.cursor()
+    cur.execute('delete from actividad where idActividad=?',(idActividad))
+    con.commit()
+    flash('Usuario Eliminado','warning')
+    return redirect(url_for('Materias'))
+
+
+
+@app.route('/consultaActividad',methods=['GET','POST'])
+def consultaActividad():      
+    if request.method == 'POST':
+        IdenFiltro=request.form['actividad']
+        con=sql.connect('BaseNotas.db')
+        con.row_factory=sql.Row
+        cur=con.cursor()
+        if (IdenFiltro!=''):
+            cur.execute('select * from actividad WHERE nombreActividad=?',(IdenFiltro) )
+        else:
+            cur.execute('select * from actividad')
+        data=cur.fetchall()
+    return render_template('Actividades.html',datas=data)
 
 
 
