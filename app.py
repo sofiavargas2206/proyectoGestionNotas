@@ -4,11 +4,40 @@ from operator import not_
 from flask import Flask,render_template,request,redirect,url_for,flash
 from datetime import datetime
 import sqlite3 as sql
+import controlador
+import hashlib
 
 app=Flask(__name__)
 app.secret_key='admin123'
 
+email_origen=""
+
 @app.route('/')
+
+
+@app.route('/index')
+def index():
+      return render_template('index.html')
+
+
+@app.route("/validarUsuario",methods=["GET","POST"])
+def validarUsuario():
+    if request.method=="POST":
+        usu=request.form["txtusuario"]
+        usu=usu.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
+        passw=request.form["txtpass"]
+        passw=passw.replace("SELECT","").replace("INSERT","").replace("DELETE","").replace("UPDATE","").replace("WHERE","")
+        
+        # passw2=passw.encode()
+        # #passw2=hashlib.sha256(passw2).hexdigest()
+        # passw2=hashlib.sha384(passw2).hexdigest()
+        
+        # respuesta=controlador.validar_usuario(usu,passw2)
+        
+        global email_origen
+        email_origen=usu
+        respuesta2=controlador.lista_destinatarios(usu)     
+        return render_template("Inicio.html",datas=respuesta2)
 
 
 @app.route('/Inicio')
@@ -162,7 +191,7 @@ def Docente():
     cur=con.cursor()
     cur.execute('select p.idPersona, p.identificacion,p.nombres,p.apellidos, p.email,m.nombreMateria FROM persona p LEFT JOIN materiaPersona mp ON p.idpersona = mp.persona left JOIN materia m ON mp.materia = m.idMateria where p.idRol=2 and p.estado="Activo"')
     data=cur.fetchall()
-    return render_template('Docentes.html')
+    return render_template('Docentes.html',datas=data)
 
 @app.route('/addDocente',methods=['GET','POST'])
 def addDocente():
@@ -250,7 +279,7 @@ def Materias():
     cur=con.cursor()
     cur.execute('select * from materia ')
     data=cur.fetchall()
-    return render_template('Materia.html')
+    return render_template('Materia.html',datas=data)
 
 @app.route('/addMateria',methods=['GET','POST'])
 def addMateria():
@@ -355,7 +384,7 @@ def Actividades():
     cur=con.cursor()
     cur.execute('select * from actividad  ')
     data=cur.fetchall()
-    return render_template('Actividades.html')
+    return render_template('Actividades.html',datas=data)
 
 @app.route('/addActividad',methods=['GET','POST'])
 def addActividad():
